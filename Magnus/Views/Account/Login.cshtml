@@ -1,0 +1,51 @@
+﻿@model Magnus.Models.LoginViewModel
+@{
+    ViewBag.Title = "Login";
+}
+<head>
+    <style>
+        mark {
+            background-color: yellow;
+            color: black;
+        }
+    </style>
+</head>
+<body style="background-color:lightblue;">
+    <h2>JALA Academy</h2>
+    <h3>Login Credentials</h3>
+    <h5>Email : training@jalaacademy.com</h5>
+    <h5>Password : jobprogram</h5>
+    <h4><mark>Learn Everything on Real-Time Scenarios</mark></h4>
+    <h3>   SIGN IN</h3>
+
+
+</body>
+
+@using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    
+
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Username, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Username)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Password, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Password)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Log in" class="btn btn-default" />
+        </div>
+    </div>
+}
